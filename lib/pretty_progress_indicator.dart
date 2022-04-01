@@ -82,7 +82,6 @@ class PrettyPainter extends CustomPainter {
     var textPainter = TextPainter(text: textSpan, textDirection: TextDirection.ltr);
     textPainter.layout();
     var offsetText = Offset(size.width / 2 - (textPainter.width / 2), size.height / 2 - (textPainter.height / 2));
-    textPainter.paint(canvas, offsetText);
 
     // PROGRESS ARCH
     var offsetArch = Offset(size.width / 2, size.height / 2);
@@ -108,21 +107,23 @@ class PrettyPainter extends CustomPainter {
       ..strokeWidth = barWidth
       ..strokeCap = StrokeCap.round;
 
+    // DRAW
     canvas.drawArc(rectArch, startRadians, sweepRadians, false, paintArch);
+    textPainter.paint(canvas, offsetText);
   }
 
   void paintLinear(Canvas canvas, Size size) {
     // PROGRESS TEXT
     var textSpan = TextSpan(
       text: label ?? (progress * 100).toInt().toString() + '%',
-      style: textStyle ?? TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w700),
+      style: textStyle ?? const TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w700),
     );
 
     var textPainter = TextPainter(text: textSpan, textDirection: TextDirection.ltr);
     textPainter.layout();
     var offsetText = Offset(size.width / 2 - (textPainter.width / 2), size.height / 2 - (textPainter.height / 2));
 
-    // PROGRESS ARCH
+    // PROGRESS BAR
     var offsetLeft = Offset(0, size.height / 2);
     var offsetRight = Offset(size.width, size.height / 2);
     var offsetProgress = Offset(size.width * progress, size.height / 2);
@@ -142,6 +143,7 @@ class PrettyPainter extends CustomPainter {
       ..strokeWidth = barWidth
       ..strokeCap = StrokeCap.round;
 
+    // DRAW
     canvas.drawLine(offsetLeft, offsetRight, paintBarBG);
     canvas.drawLine(offsetLeft, offsetProgress, paintBar);
     textPainter.paint(canvas, offsetText);
