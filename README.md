@@ -2,7 +2,7 @@
 
 # Pretty Progress Indicator
 
-This progress indicator is intended as a stylized alternative to the other progress indicators floating around the web. Feel free to fork or PR!
+This progress indicator is intended as a stylized alternative to the other progress indicators floating around the web.
     
 <img height="500" src="https://user-images.githubusercontent.com/7101404/160982328-8a587ffa-beb3-4ee7-8981-f4ed538ac014.gif" />
 
